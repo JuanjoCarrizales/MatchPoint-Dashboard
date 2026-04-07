@@ -48,6 +48,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.2.0")
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     implementation("org.osmdroid:osmdroid-android:6.1.17")
+    implementation("androidx.core:core-splashscreen:1.0.1")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

@@ -65,19 +65,6 @@ class EstadisticasActivity : AppCompatActivity() {
 
         }
 
-        // Botón temporal para generar datos (bórralo después!!!!!!!!!!!!!!!!!!!!!!!!):
-        val btnGenerar = findViewById<Button>(R.id.btnGenerar)
-        btnGenerar.setOnClickListener {
-            btnGenerar.isEnabled = false
-            btnGenerar.text = "Generando..."
-            DataGenerator.generarPartidos {
-                runOnUiThread {
-                    btnGenerar.text = "✅ Datos generados"
-                    Toast.makeText(this, "20 partidos subidos!", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
-
         pieChart = findViewById(R.id.pieChart)
         txtVictorias = findViewById(R.id.txtVictorias)
         txtDerrotas = findViewById(R.id.txtDerrotas)
@@ -184,11 +171,25 @@ class EstadisticasActivity : AppCompatActivity() {
             .orderBy("fecha_inicio", com.google.firebase.firestore.Query.Direction.DESCENDING)
             .limit(5)
             .get()
-            .addOnSuccessListener {partidos ->
-                for (partido in partidos) {
-                    FirebaseManager.getResumenPartido(partido.id) {fecha, resultado, sets ->
-                        runOnUiThread {
-                            aFilaPartido(fecha, resultado, sets)
+            .addOnSuccessListener { partidos ->
+                listaPartidos.removeAllViews() //Limpia la lista antes de cargar (si se añade un nuevo partido y se recarga la pantalla)
+                val total = partidos.size()
+                //Array para mantener el orden:
+                val resultados = arrayOfNulls<Triple<String, String, List<String>>>(total)
+                var procesados = 0
+
+                partidos.forEachIndexed { index, partido ->
+                    FirebaseManager.getResumenPartido(partido.id) { fecha, resultado, sets ->
+                        //Guardamos en la posición correcta:
+                        resultados[index] = Triple(fecha, resultado, sets)
+                        procesados++
+                        //Cuando todos estén listos, mostramos en orden:
+                        if (procesados == total) {
+                            runOnUiThread {
+                                resultados.filterNotNull().forEach { (fecha, resultado, sets) ->
+                                    aFilaPartido(fecha, resultado, sets)
+                                }
+                            }
                         }
                     }
                 }

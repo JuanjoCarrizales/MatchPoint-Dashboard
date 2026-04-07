@@ -15,17 +15,15 @@
         android:theme="@style/Theme.MatchPointDashboard">
         <activity
             android:name=".login.LoginActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.MatchPointDashboard.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".login.RegisterActivity"/>
-        <activity android:name=".home.HomeActivity"/>
         <activity android:name=".estadisticas.EstadisticasActivity"/>
-        <activity android:name=".historial.HistorialActivity"/>
     </application>
 
 </manifest>

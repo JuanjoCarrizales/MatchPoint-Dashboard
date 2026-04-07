@@ -43,17 +43,6 @@
                     android:textColor="#aaaaaa"
                     android:textSize="13sp"/>
 
-                <!--BORRAR!!!!!!!-->
-                <Button
-                    android:id="@+id/btnGenerar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Generar datos de prueba"
-                    android:backgroundTint="#555555"
-                    android:textColor="#ffffff"
-                    android:layout_marginTop="16dp"/>
-                <!--BORRAR!!!!!!!-->
-
             </LinearLayout>
 
             <TextView
