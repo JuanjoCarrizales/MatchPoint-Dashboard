@@ -23,24 +23,24 @@ object DataGenerator {
                 cal.get(Calendar.YEAR),
                 cal.get(Calendar.MONTH) + 1,
                 cal.get(Calendar.DAY_OF_MONTH),
-                Random.nextInt(8, 22), // hora entre 8 y 22
+                Random.nextInt(8, 22), //hora entre 8 y 22:
                 Random.nextInt(0, 59)
             )
 
-            val ganador = Random.nextInt(1, 3) // 1 o 2
-            val duracion = Random.nextInt(1800, 7200) // 30min - 2h
+            val ganador = Random.nextInt(1, 3) //1 o 2
+            val duracion = Random.nextInt(1800, 7200) //30min - 2h
             val diaSemana = cal.get(Calendar.DAY_OF_WEEK)
             val horaInicio = cal.get(Calendar.HOUR_OF_DAY)
             val minutoInicio = cal.get(Calendar.MINUTE)
 
             //Ubicaciones variadas en España:
             val ubicaciones = listOf(
-                Pair(41.58981786713462, 2.2502560027140834),  //Padel Lliça
-                Pair(41.63080571712787, 2.2914078320130398),   //Padel les Franqueses
-                Pair(41.58189724773944, 2.2737908500916393),  //Padel indoor Granollers
-                Pair(41.5373525953293, 2.2229578703246706),  //Padel Mollet
-                Pair(41.513705109757645, 2.196077383814871),  //Padel La Llagosta
-                Pair(41.55537850900299, 2.280726943089949)   //Padel indoor Vilanova
+                Pair(41.58981786713462, 2.2502560027140834),//Padel Lliça
+                Pair(41.63080571712787, 2.2914078320130398),//Padel les Franqueses
+                Pair(41.58189724773944, 2.2737908500916393),//Padel indoor Granollers
+                Pair(41.5373525953293, 2.2229578703246706),//Padel Mollet
+                Pair(41.513705109757645, 2.196077383814871),//Padel La Llagosta
+                Pair(41.55537850900299, 2.280726943089949)//Padel indoor Vilanova
             ).random()
 
             val partido = hashMapOf(

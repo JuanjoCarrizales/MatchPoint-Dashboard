@@ -3,12 +3,8 @@ package com.mypadelapp.matchpointdashboard.estadisticas
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.XAxis
@@ -62,8 +58,20 @@ class EstadisticasActivity : AppCompatActivity() {
                     val apellido = doc.getString("apellido") ?: ""
                     txtNombre.text = "$nombre $apellido"
                 }
-
         }
+
+        //Botón temporal para generar datos sintéticos:
+        /*val btnGenerar = findViewById<Button>(R.id.btnGenerar)
+        btnGenerar.setOnClickListener {
+            btnGenerar.isEnabled = false
+            btnGenerar.text = "Generando..."
+                DataGenerator.generarPartidos {
+                    runOnUiThread {
+                        btnGenerar.text = "Datos generados"
+                        Toast.makeText(this, "20 partidos subidos!", Toast.LENGTH_SHORT).show()
+                    }
+                }
+        }*/
 
         pieChart = findViewById(R.id.pieChart)
         txtVictorias = findViewById(R.id.txtVictorias)
